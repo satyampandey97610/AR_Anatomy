@@ -1,7 +1,7 @@
 {
-  "app": "Satyam Anatomy AR",
+  "app": "Anatomy AR",
   "version": "1.0",
-  "package": "com.satyampandey.anatomyar",
+  "package": "com.arvrlab.anatomyar",
   "unity": "2018.2.14f1",
   "min_sdk": 23,
   "target_sdk": 28,
@@ -12,7 +12,7 @@
   "archive_integrity": "passed",
   "apk_signature_v1": "verified",
   "apk_signature_v2": "verified",
-  "sha256": "fa92ae1d503345e75039b5870c078311400fcfba8f8dd7a657b2f78129c4628e",
+  "sha256": "1cb5518496fb97e4819cdf3fbcdb516020a68f9277775c7e73e922515f1e5400",
   "modified_apk_phone_test": "pending",
   "baseline_phone_test": "User reported anatomy views working on Tecno Spark Go 2023",
   "realme_test": "pending"

@@ -13,14 +13,14 @@ from reportlab.lib.enums import TA_CENTER,TA_JUSTIFY
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 import json
-R=Path('AR_Anatomy/Documentation');doc=Document(R/'AR_Anatomy_Project_Report.docx')
+R=Path(__file__).resolve().parents[1];doc=Document(R/'AR_Anatomy_Project_Report.docx')
 for name,file in [('TimesNewRoman','times.ttf'),('TimesNewRoman-Bold','timesbd.ttf'),('TimesNewRoman-Italic','timesi.ttf'),('TimesNewRoman-BoldItalic','timesbi.ttf'),('Consolas','consola.ttf')]:
  pdfmetrics.registerFont(TTFont(name,str(Path('C:/Windows/Fonts')/file)))
 pdfmetrics.registerFontFamily('TimesNewRoman',normal='TimesNewRoman',bold='TimesNewRoman-Bold',italic='TimesNewRoman-Italic',boldItalic='TimesNewRoman-BoldItalic')
 BASE=ParagraphStyle('Body',fontName='TimesNewRoman',fontSize=11,leading=14,spaceAfter=6,alignment=TA_JUSTIFY)
 CENTER=ParagraphStyle('Center',parent=BASE,alignment=TA_CENTER)
-H1=ParagraphStyle('H1',parent=BASE,fontName='TimesNewRoman-Bold',fontSize=16,leading=20,textColor=colors.HexColor('#17354A'),spaceBefore=8,spaceAfter=12,keepWithNext=True)
-H2=ParagraphStyle('H2',parent=BASE,fontName='TimesNewRoman-Bold',fontSize=12.5,leading=16,textColor=colors.HexColor('#17354A'),spaceBefore=8,spaceAfter=7,keepWithNext=True)
+H1=ParagraphStyle('H1',parent=BASE,fontName='TimesNewRoman-Bold',fontSize=16,leading=20,textColor=colors.black,spaceBefore=8,spaceAfter=12,keepWithNext=True)
+H2=ParagraphStyle('H2',parent=BASE,fontName='TimesNewRoman-Bold',fontSize=12.5,leading=16,textColor=colors.black,spaceBefore=8,spaceAfter=7,keepWithNext=True)
 CAP=ParagraphStyle('Caption',parent=CENTER,fontName='TimesNewRoman-Italic',fontSize=9,leading=12,spaceAfter=7)
 CELL=ParagraphStyle('Cell',parent=BASE,fontSize=9.4,leading=12,spaceAfter=4)
 CODE=ParagraphStyle('Code',parent=BASE,fontName='Consolas',fontSize=9,leading=12,spaceAfter=9)
@@ -67,8 +67,12 @@ def para_flow(wp,maxw=WIDTH,incell=False):
   elif any(r.font.name=='Consolas' for r in wp.runs):sty=CODE
   content=escape(txt).replace('\n','<br/>')
   if wp.runs and all(r.bold for r in wp.runs if r.text.strip()):content='<b>'+content+'</b>'
-  if wp.style.name=='Normal' and any(r.font.size and r.font.size.pt>=20 for r in wp.runs):
-   sty=ParagraphStyle('CoverTitle',parent=CENTER,fontSize=23,leading=28,spaceAfter=14)
+  sized=[r for r in wp.runs if r.font.size]
+  if wp.style.name=='Normal' and sized and sty is not CODE:
+   run=sized[0];size=run.font.size.pt
+   color=colors.HexColor('#'+str(run.font.color.rgb)) if run.font.color.rgb else colors.black
+   after=wp.paragraph_format.space_after.pt if wp.paragraph_format.space_after else 8
+   sty=ParagraphStyle('ExplicitText',parent=CENTER if wp.alignment==1 else BASE,fontSize=size,leading=size*1.15,textColor=color,spaceAfter=after)
   out.append(Paragraph(content,sty))
  if wp._p.xpath('.//w:br[@w:type="page"]'):out.append(PageBreak())
  if wp._p.xpath('./w:pPr/w:sectPr'):out.append(PageBreak())
@@ -106,5 +110,16 @@ while story and isinstance(story[-1],PageBreak):story.pop()
 pdf=ReportDoc(str(R/'AR_Anatomy_Project_Report.pdf'),pagesize=(595.28,841.89),leftMargin=64,rightMargin=56,topMargin=49,bottomMargin=45,title='Satyam Anatomy AR - AR/VR Lab Project Report',author='Kartikey Tiwari; Satyam Pandey')
 pdf.addPageTemplates(PageTemplate(id='main',frames=[Frame(64,45,WIDTH,747,id='body',leftPadding=0,rightPadding=0,topPadding=0,bottomPadding=0)],onPage=decorate))
 pdf.multiBuild(story)
-(R/'report-heading-pages.json').write_text(json.dumps(heading_pages,indent=2),encoding='utf-8')
+# Cache PDF page entries in the editable Word TOC; Word can refresh after editing.
+entries={}
+for title,page,level in heading_pages:
+ if level==0:entries[title]=page
+for fld in doc.element.body.xpath('.//w:fldSimple'):
+ if fld.get(qn('w:instr'),'').strip().startswith('TOC'):
+  for child in list(fld):fld.remove(child)
+  for title,page in entries.items():
+   from docx.oxml import OxmlElement
+   run=OxmlElement('w:r');text=OxmlElement('w:t');text.text=title+'  ...  '+str(page);run.append(text);fld.append(run)
+   br=OxmlElement('w:r');line=OxmlElement('w:br');br.append(line);fld.append(br)
+doc.save(R/'AR_Anatomy_Project_Report.docx')
 print('PDF exported:',R/'AR_Anatomy_Project_Report.pdf')

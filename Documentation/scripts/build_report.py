@@ -1,4 +1,4 @@
-﻿from pathlib import Path
+from pathlib import Path
 from docx import Document
 from docx.shared import Inches,Pt,Cm,RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
@@ -17,10 +17,10 @@ for name in ['Normal','Body Text']:
  st=D.styles[name];st.font.name='Times New Roman';st.font.size=Pt(12)
  st.paragraph_format.line_spacing=1.15;st.paragraph_format.space_after=Pt(7)
 for name,size in [('Title',24),('Heading 1',17),('Heading 2',13)]:
- st=D.styles[name];st.font.name='Times New Roman';st.font.size=Pt(size);st.font.color.rgb=RGBColor.from_string('17354A')
+ st=D.styles[name];st.font.name='Times New Roman';st.font.size=Pt(size);st.font.color.rgb=RGBColor.from_string('000000')
  st.paragraph_format.keep_with_next=True
 D.styles['Caption'].font.name='Times New Roman';D.styles['Caption'].font.size=Pt(10)
-D.core_properties.title='Satyam Anatomy AR - AR/VR Lab Project Report'
+D.core_properties.title='Anatomy AR - AR/VR Lab Project Report'
 D.core_properties.author='Satyam Pandey; Kartikey Tiwari'
 D.core_properties.subject='Centre of Artificial Intelligence, MITS Gwalior'
 
@@ -54,32 +54,46 @@ def section(fmt):
  fp=s.footer.paragraphs[0];fp.alignment=WD_ALIGN_PARAGRAPH.CENTER;field(fp,'PAGE')
  return s
 
-# Cover follows the supplied institutional project-report format.
+# Cover reproduces the supplied project_file_ar_vr.pdf arrangement.
+def coverline(text,size=14,color='000000',after=8):
+ q=p(text,True,True)
+ q.paragraph_format.space_after=Pt(after)
+ if text=='A':q.paragraph_format.space_before=Pt(25)
+ if text in ['Submitted By','Submitted To']:q.paragraph_format.space_before=Pt(20)
+ if text=='July - Dec 2026':q.paragraph_format.space_before=Pt(30)
+ for run in q.runs:
+  run.font.size=Pt(size);run.font.color.rgb=RGBColor.from_string(color)
+ return q
+coverline('A',14)
+coverline('Project File For',14)
+coverline('AR-VR LAB',14)
+coverline('Anatomy AR',18,'0070C0')
+coverline('Submitted for the partial fulfilment of the degree of',12)
+coverline('Bachelor of Technology',18,'0070C0')
+coverline('In',12)
+coverline('Artificial Intelligence and Robotics',18,'0070C0',18)
+coverline('Submitted By',15,'7030A0')
+coverline('Kartikey Tiwari - 0901AI231033',13)
+coverline('Satyam Pandey - 0901AI231059',13,'000000',20)
+coverline('Submitted To',15,'7030A0')
+coverline('Dr. Vibha Tiwari',15,'997300')
+coverline('Mr. Ramnaresh Sharma',15,'984807')
+coverline('Centre of Artificial Intelligence',14,'000000',20)
 D.add_picture(str(OUT/'mits-header.jpeg'),width=Cm(16.5))
-p('\nPROJECT REPORT\nON',True,True)
-q=p('Satyam Anatomy AR',True,True)
-for r in q.runs:r.font.size=Pt(23)
-p('Interactive Human Anatomy Learning\nUsing Augmented Reality',True,True)
-p('Augmented Reality / Virtual Reality Lab',True)
-p('Submitted in partial fulfilment of the academic requirements\nfor the degree of Bachelor of Technology',True)
-p('\nSubmitted By',True,True)
-table(['Student','Enrollment Number'],[['Kartikey Tiwari','0901AI231033'],['Satyam Pandey','0901AI231059']])
-p('\nSubmitted To',True,True)
-p('Dr. Vibha Tiwari\nMr. Ramnaresh Sharma',True)
-p('CENTRE OF ARTIFICIAL INTELLIGENCE',True,True)
-p('MADHAV INSTITUTE OF TECHNOLOGY & SCIENCE, GWALIOR\n(Deemed University)\nGola Ka Mandir, Gwalior - 474005, Madhya Pradesh',True)
-p('November 2026',True,True)
+D.paragraphs[-1].alignment=WD_ALIGN_PARAGRAPH.CENTER
+D.paragraphs[-1].paragraph_format.space_before=Pt(45)
+coverline('July - Dec 2026',14,'0000FF')
 
 section('lowerRoman')
 heading('DECLARATION BY THE CANDIDATES')
-p('We, Kartikey Tiwari (0901AI231033) and Satyam Pandey (0901AI231059), submit this report entitled “Satyam Anatomy AR: Interactive Human Anatomy Learning Using Augmented Reality” for evaluation in the AR/VR Lab at the Centre of Artificial Intelligence, Madhav Institute of Technology & Science, Gwalior.')
+p('We, Kartikey Tiwari (0901AI231033) and Satyam Pandey (0901AI231059), submit this report entitled “Anatomy AR: Interactive Human Anatomy Learning Using Augmented Reality” for evaluation in the AR/VR Lab at the Centre of Artificial Intelligence, Madhav Institute of Technology & Science, Gwalior.')
 p('The project is an adaptation of the publicly available AnatomyViewerAR project by danMoksh and collaborators. The original anatomy models, image-target data, scenes and relevant source are acknowledged. The original BSD 2-Clause license is retained. This report distinguishes inherited functionality from the interface, interaction, build and documentation changes included in the adaptation.')
 p('We understand that the project demonstration and our individual understanding will be evaluated. Build results, preview images and device observations are identified according to their actual source. Pending device tests are not represented as completed tests.')
 p('\nKartikey Tiwari - 0901AI231033\nSignature: __________________________')
 p('\nSatyam Pandey - 0901AI231059\nSignature: __________________________')
 p('\nDate: __________________\nPlace: Gwalior')
 page();heading('CERTIFICATE')
-p('This project report entitled “Satyam Anatomy AR: Interactive Human Anatomy Learning Using Augmented Reality” is submitted by Kartikey Tiwari (0901AI231033) and Satyam Pandey (0901AI231059), students of the Centre of Artificial Intelligence, Madhav Institute of Technology & Science, Gwalior (Deemed University), for evaluation in the Augmented Reality / Virtual Reality Lab.')
+p('This project report entitled “Anatomy AR: Interactive Human Anatomy Learning Using Augmented Reality” is submitted by Kartikey Tiwari (0901AI231033) and Satyam Pandey (0901AI231059), students of the Centre of Artificial Intelligence, Madhav Institute of Technology & Science, Gwalior (Deemed University), for evaluation in the Augmented Reality / Virtual Reality Lab.')
 p('The work presents an educational image-target AR application based on an acknowledged existing project, together with interface and interaction adaptations, Android build preparation and project documentation. Approval of the report and assessment of the working demonstration are subject to faculty verification.')
 p('\n\nDr. Vibha Tiwari\nFaculty Mentor\nSignature: __________________________')
 p('\n\nMr. Ramnaresh Sharma\nFaculty Mentor\nSignature: __________________________')
@@ -91,7 +105,7 @@ p('We acknowledge danMoksh and the original AnatomyViewerAR team—Moksh Dandoti
 p('We also acknowledge Unity Technologies and the Vuforia Engine developers for the tools and documentation used to understand the application. The reference reports supplied for this submission were used for report structure and presentation, not as evidence of our project outputs.')
 p('\nKartikey Tiwari - 0901AI231033\nSatyam Pandey - 0901AI231059')
 page();heading('ABSTRACT')
-p('Satyam Anatomy AR is an Android educational application that displays three-dimensional anatomy models in relation to a predefined image viewed through a phone camera. The project demonstrates the practical use of image-target augmented reality for inspecting the skeleton, skull, human body, heart and brain. It does not reconstruct models from arbitrary photographs; the models are stored within the application.')
+p('Anatomy AR is an Android educational application that displays three-dimensional anatomy models in relation to a predefined image viewed through a phone camera. The project demonstrates the practical use of image-target augmented reality for inspecting the skeleton, skull, human body, heart and brain. It does not reconstruct models from arbitrary photographs; the models are stored within the application.')
 p('The implementation adapts an existing Unity and Vuforia project. Unity manages scenes, models, interface elements and Android packaging, while Vuforia supplies image recognition and tracking. The adaptation adds a consistent model-selection menu, concise educational descriptions, bounded size controls, reset, pause/resume rotation, help and attribution. The application name is used without repeatedly branding every viewer screen.')
 p('The adapted Android build was compiled successfully, its package metadata was inspected, and its APK archive and Android v1/v2 signatures were verified. The original APK was reported working on a Tecno Spark Go 2023. The new build still requires device testing; compatibility with a future Realme device has not been established. Output figures in this report are identified as Unity previews rather than phone-camera tracking evidence.')
 p('Keywords: augmented reality, image target, anatomy visualization, Unity, Vuforia, Android, C#.')
@@ -149,11 +163,11 @@ sub('4.4 Build Compatibility Fixes')
 p('An unused model-recognition sample handler did not match the bundled Vuforia API. It was removed and its editor attachment hook adjusted for this image-target application. The legacy Android build initially waited on an online Gradle dependency. The final packaging route used Unity’s internal Android build method and the installed SDK tools.')
 p('The generated package was aligned and signed using Android build tools. Signing is a necessary packaging step: a successful Unity build message alone does not establish that an APK is installable. Android v1 and v2 signature verification was completed for the distributed file.')
 sub('4.5 Important Source Files')
-table(['File','Purpose'],[['SatyamAnatomyUI.cs','Menu, facts, model controls, instructions and credits.'],['Rotate.cs','Automatic rotation using Time.deltaTime.'],['CSharpscaling.cs','Guarded two-touch scaling.'],['LoadGame.cs','Scene navigation and quitting.'],['SatyamBuild.cs','Android build configuration.'],['ReportPreview.cs','Clearly labeled Unity output previews for documentation.']])
+table(['File','Purpose'],[['AnatomyUI.cs','Menu, facts, model controls, instructions and credits.'],['Rotate.cs','Automatic rotation using Time.deltaTime.'],['CSharpscaling.cs','Guarded two-touch scaling.'],['LoadGame.cs','Scene navigation and quitting.'],['AnatomyBuild.cs','Android build configuration.'],['ReportPreview.cs','Clearly labeled Unity output previews for documentation.']])
 
 page();heading('CHAPTER 5: INSTALLATION AND DEMONSTRATION')
 sub('5.1 Installing the Application')
-p('Download SatyamAnatomyAR.apk from the project’s v1.0.0 GitHub release. Open it on the Android phone and follow the installation prompt if the operating system permits it. Open the application and allow camera access. This package has its own application ID, com.satyampandey.anatomyar, so it is distinguishable from the original application.')
+p('Download AnatomyAR.apk from the project’s v1.0.0 GitHub release. Open it on the Android phone and follow the installation prompt if the operating system permits it. Open the application and allow camera access. This package has its own application ID, com.arvrlab.anatomyar, so it is distinguishable from the original application.')
 p('Repository: https://github.com/satyampandey97610/AR_Anatomy\nAPK release: https://github.com/satyampandey97610/AR_Anatomy/releases/tag/v1.0.0')
 sub('5.2 Preparing the Image Target')
 p('Display Demo/TARGET-PICTURE.png on a laptop or print it without distorting the proportions. Keep the complete picture visible to the camera. Use even lighting, a flat surface and minimal glare. Select a model before scanning. A random anatomy photograph will not substitute for the configured target.')
@@ -164,7 +178,7 @@ p('Introduce the educational purpose, open the menu, select a model, scan the ta
 
 page();heading('CHAPTER 6: VERIFICATION AND RESULTS')
 sub('6.1 Build and Package Verification')
-table(['Check','Result'],[['Unity Android compilation and packaging','Passed; build completed successfully.'],['APK archive integrity','Passed; no corrupt ZIP entry found.'],['Application label','Satyam Anatomy AR.'],['Application identifier','com.satyampandey.anatomyar.'],['Android configuration','Minimum API 23; target API 28; ARMv7.'],['Android v1 / v2 signatures','Verified for the distributed signed APK.'],['Original APK on Tecno','User reported working anatomy views.'],['New adapted APK on Tecno','Pending phone validation.'],['Realme device compatibility','Not tested.']])
+table(['Check','Result'],[['Unity Android compilation and packaging','Passed; build completed successfully.'],['APK archive integrity','Passed; no corrupt ZIP entry found.'],['Application label','Anatomy AR.'],['Application identifier','com.arvrlab.anatomyar.'],['Android configuration','Minimum API 23; target API 28; ARMv7.'],['Android v1 / v2 signatures','Verified for the distributed signed APK.'],['Original APK on Tecno','User reported working anatomy views.'],['New adapted APK on Tecno','Pending phone validation.'],['Realme device compatibility','Not tested.']])
 verification=json.loads((OUT/'BUILD-VERIFICATION.json').read_text())
 p('Distributed APK SHA-256:\n'+verification['sha256'])
 D.add_paragraph('Figure 9. Package verification summary; the hash identifies the signed release APK.',style='Caption')

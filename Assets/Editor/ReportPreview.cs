@@ -16,14 +16,14 @@ public static class ReportPreview
 
     static ReportPreview() { EditorApplication.update += Tick; }
 
-    [MenuItem("Satyam/Capture report previews")]
+    [MenuItem("Anatomy/Capture report previews")]
     public static void Begin()
     {
         EditorPrefs.SetBool(Active, false);
         for (int i = 0; i < Scenes.Length; i++)
         {
             EditorSceneManager.OpenScene("Assets/Scenes/" + Scenes[i] + ".unity");
-            var ui = new GameObject("Report preview interface").AddComponent<SatyamAnatomyUI>();
+            var ui = new GameObject("Report preview interface").AddComponent<AnatomyUI>();
             ui.SendMessage("Start");
             Capture(Scenes[i], i > 0);
         }

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 // Presentation and learning controls added to the original image-target project.
-public class SatyamAnatomyUI : MonoBehaviour
+public class AnatomyUI : MonoBehaviour
 {
     static readonly string[] Scenes = { "Skeleton", "Skull", "HumanBody", "Heart", "Brain" };
     static readonly string[] Names = { "Skeleton", "Skull", "Human body", "Heart", "Brain" };
@@ -39,7 +39,7 @@ public class SatyamAnatomyUI : MonoBehaviour
     static void OnScene(Scene scene, LoadSceneMode mode)
     {
         if (System.Array.IndexOf(Scenes, scene.name) < 0 && scene.name != "OpenScene") return;
-        new GameObject("Satyam Anatomy Interface").AddComponent<SatyamAnatomyUI>();
+        new GameObject("Anatomy Interface").AddComponent<AnatomyUI>();
     }
 
     void Start()
@@ -47,7 +47,7 @@ public class SatyamAnatomyUI : MonoBehaviour
         font = Resources.GetBuiltinResource<Font>("Arial.ttf");
         // Replace legacy interface only. ARCamera, targets and models remain active.
         foreach (Canvas old in FindObjectsOfType<Canvas>()) old.gameObject.SetActive(false);
-        GameObject go = new GameObject("Satyam Canvas", typeof(RectTransform), typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
+        GameObject go = new GameObject("Anatomy Canvas", typeof(RectTransform), typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
         go.transform.SetParent(transform, false);
         canvas = go.GetComponent<Canvas>();
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
@@ -101,7 +101,7 @@ public class SatyamAnatomyUI : MonoBehaviour
     {
         RectTransform bg = Panel(canvas.transform, 0, 0, 5000, 5000, Ink);
         bg.SetAsFirstSibling();
-        Label(canvas.transform, "Satyam Anatomy AR", 0, 95, 660, 70, 42, Color.white);
+        Label(canvas.transform, "Anatomy AR", 0, 95, 660, 70, 42, Color.white);
         Label(canvas.transform, "Explore. Inspect. Learn.", 0, 170, 660, 60, 30, new Color(.3f, .91f, .81f));
         Label(canvas.transform, "Explore the human body in augmented reality", 0, 245, 640, 80, 25, Color.white);
         for (int i = 0; i < Scenes.Length; i++)
@@ -190,7 +190,7 @@ public class SatyamAnatomyUI : MonoBehaviour
     void Credits()
     {
         TextAsset license = Resources.Load<TextAsset>("OriginalLicense");
-        Show("ABOUT & CREDITS", "Satyam Anatomy AR\nAdaptation and interface: Satyam Pandey (0901AI231059).\nBatch member: Kartikey Tiwari (0901AI231033).\n\nBased on AnatomyViewerAR by danMoksh. Original team: Moksh Dandotiya, Yuvraj Tiwari and Mohit Sahu.\nUnity + Vuforia. Educational use; not a diagnostic tool.\n\n" + (license ? license.text : "See the original BSD 2-Clause LICENSE distributed with the project."));
+        Show("ABOUT & CREDITS", "Anatomy AR\nAdaptation and interface: Satyam Pandey (0901AI231059).\nBatch member: Kartikey Tiwari (0901AI231033).\n\nBased on AnatomyViewerAR by danMoksh. Original team: Moksh Dandotiya, Yuvraj Tiwari and Mohit Sahu.\nUnity + Vuforia. Educational use; not a diagnostic tool.\n\n" + (license ? license.text : "See the original BSD 2-Clause LICENSE distributed with the project."));
     }
 
     void Update()

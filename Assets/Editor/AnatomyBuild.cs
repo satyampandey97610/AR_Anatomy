@@ -4,21 +4,21 @@ using UnityEditor;
 using UnityEditor.Build.Reporting;
 using UnityEngine;
 
-public static class SatyamBuild
+public static class AnatomyBuild
 {
-    [MenuItem("Satyam/Build Android APK")]
+    [MenuItem("Anatomy/Build Android APK")]
     public static void Android()
     {
         string directory = Path.GetFullPath(Path.Combine(Application.dataPath, "../../Builds"));
         Directory.CreateDirectory(directory);
         string sdk = Path.GetFullPath(Path.Combine(Application.dataPath, "../../AndroidSDK"));
         if (Directory.Exists(sdk)) EditorPrefs.SetString("AndroidSdkRoot", sdk);
-        string jdk = Environment.GetEnvironmentVariable("SATYAM_JDK_PATH");
+        string jdk = Environment.GetEnvironmentVariable("ANATOMY_JDK_PATH");
         if (!String.IsNullOrEmpty(jdk)) EditorPrefs.SetString("JdkPath", jdk);
         EditorUserBuildSettings.androidBuildSystem = AndroidBuildSystem.Internal;
         PlayerSettings.companyName = "Satyam Pandey";
-        PlayerSettings.productName = "Satyam Anatomy AR";
-        PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, "com.satyampandey.anatomyar");
+        PlayerSettings.productName = "Anatomy AR";
+        PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, "com.arvrlab.anatomyar");
         PlayerSettings.bundleVersion = "1.0";
         PlayerSettings.Android.bundleVersionCode = 1;
         PlayerSettings.Android.minSdkVersion = (AndroidSdkVersions)23;
@@ -28,7 +28,7 @@ public static class SatyamBuild
         PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.Mono2x);
         string[] scenes = { "OpenScene", "Skeleton", "Skull", "HumanBody", "Heart", "Brain" };
         for (int i = 0; i < scenes.Length; i++) scenes[i] = "Assets/Scenes/" + scenes[i] + ".unity";
-        string apk = Path.Combine(directory, "SatyamAnatomyAR.apk");
+        string apk = Path.Combine(directory, "AnatomyAR.apk");
         BuildReport report = BuildPipeline.BuildPlayer(scenes, apk, BuildTarget.Android, BuildOptions.None);
         if (report.summary.result != BuildResult.Succeeded) throw new Exception("Android build failed: " + report.summary.result);
         // The legacy internal packager may leave its output unsigned with current JDKs.
@@ -41,7 +41,7 @@ public static class SatyamBuild
             throw new Exception("APK built but signing tools or the local development keystore are missing. Do not distribute unsigned output.");
         Run(java, "-jar " + Quote(signer) + " sign --ks " + Quote(key) + " --ks-key-alias androiddebugkey --ks-pass pass:android --key-pass pass:android " + Quote(apk));
         Run(java, "-jar " + Quote(signer) + " verify --verbose " + Quote(apk));
-        Debug.Log("SATYAM_BUILD_SUCCESS: " + directory);
+        Debug.Log("ANATOMY_BUILD_SUCCESS: " + directory);
     }
 
     static string Quote(string value) { return "\"" + value.Replace("\"", "") + "\""; }

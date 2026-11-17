@@ -1,10 +1,10 @@
-#  Anatomy AR
+# Anatomy AR
 
 **Explore human anatomy through a phone camera.** Select a body part, scan the supplied picture, and inspect a stored 3D model in augmented reality.
 
 ![Unity](https://img.shields.io/badge/Unity-2018.2.14f1-222222?logo=unity) ![Platform](https://img.shields.io/badge/Platform-Android-3DDC84?logo=android) ![License](https://img.shields.io/badge/License-BSD--2--Clause-blue)
 
-**[Download Android APK](https://github.com/satyampandey97610/AR_Anatomy/releases/download/v1.0.0/SatyamAnatomyAR.apk)** ? **[Project report PDF](Documentation/AR_Anatomy_Project_Report.pdf)** ? **[Editable Word report](Documentation/AR_Anatomy_Project_Report.docx)**
+**[Download Android APK](https://github.com/satyampandey97610/AR_Anatomy/releases/download/v1.0.0/AnatomyAR.apk)** ? **[Project report PDF](Documentation/AR_Anatomy_Project_Report.pdf)** ? **[Editable Word report](Documentation/AR_Anatomy_Project_Report.docx)**
 
 > **Verified:** Android build, APK archive, metadata and v1/v2 signatures. **Pending:** testing the adapted APK on the phone. The original baseline was reported working on a Tecno Spark Go 2023. Realme compatibility remains unverified.
 
@@ -55,10 +55,10 @@ This is a legacy project. Use **Unity 2018.2.14f1**, Android Build Support and t
 1. Install and activate Unity Personal if eligible.
 2. Open this repository's root as a Unity project.
 3. Configure JDK 8 and a compatible Android SDK in Unity External Tools.
-4. Use **Satyam > Build Android APK**.
+4. Use **Anatomy > Build Android APK**.
 5. Test the generated APK on the actual presentation phone.
 
-The automated build produces `../Builds/SatyamAnatomyAR.apk`, with a separate app ID `com.satyampandey.anatomyar`, minimum API 23 and target API 28. It uses the ARMv7 runtime from the original project. **ARM64-only phones need a runtime/SDK migration; this build is not guaranteed to work on every Realme phone.** This is a classroom sideloading build, not a Play Store submission configuration.
+The automated build produces `../Builds/AnatomyAR.apk`, with a separate app ID `com.arvrlab.anatomyar`, minimum API 23 and target API 28. It uses the ARMv7 runtime from the original project. **ARM64-only phones need a runtime/SDK migration; this build is not guaranteed to work on every Realme phone.** This is a classroom sideloading build, not a Play Store submission configuration.
 
 ## Before the viva
 
