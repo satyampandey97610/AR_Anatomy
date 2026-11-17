@@ -1,0 +1,41 @@
+# --- .gitattributes for Unity ---
+
+# --- Unity Text & Metadata ---
+# Force all Unity's text-based YAML files to be text and
+# normalize their line endings to LF.
+# This prevents .meta file corruption!
+*.meta text eol=lf
+*.unity text eol=lf
+*.prefab text eol=lf
+*.mat text eol=lf
+*.asset text eol=lf
+
+# --- Standard Text Files ---
+# Mark all common text files as text and normalize to LF.
+*.cs text eol=lf
+*.shader text eol=lf
+*.json text eol=lf
+*.xml text eol=lf
+*.txt text eol=lf
+*.md text eol=lf
+*.asmdef text eol=lf
+
+# Images
+*.png -text
+*.jpg -text
+*.jpeg -text
+*.gif -text
+
+# 3D Models
+*.fbx -text
+*.obj -text
+
+# Fonts
+*.ttf -text
+
+# Documents
+*.pdf -text
+
+# Binary Data (like your Vuforia files)
+*.dat -text
+QCAR/somedata16 -text
