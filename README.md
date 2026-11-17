@@ -1,31 +1,80 @@
 # Satyam Anatomy AR
 
-An educational Android image-target AR viewer adapted from [AnatomyViewerAR](https://github.com/danMoksh/AnatomyViewerAR).
+**Explore human anatomy through a phone camera.** Select a body part, scan the supplied picture, and inspect a stored 3D model in augmented reality.
+
+![Unity](https://img.shields.io/badge/Unity-2018.2.14f1-222222?logo=unity) ![Platform](https://img.shields.io/badge/Platform-Android-3DDC84?logo=android) ![License](https://img.shields.io/badge/License-BSD--2--Clause-blue)
+
+> **Build status:** the original APK was reported working on a Tecno Spark Go 2023. The Satyam adaptation is being compiled and is not yet device-verified. Realme compatibility is unverified. See release labels before installing.
+
+## Get started
+
+1. Download an APK from [Releases](https://github.com/satyampandey97610/AR_Anatomy/releases). Read whether it is the **original baseline** or the **Satyam adaptation**.
+2. Install it on an Android phone and allow camera access.
+3. Open [the target picture](Demo/TARGET-PICTURE.png) on a laptop, or print it. Download it before printing.
+4. Select an anatomy model and point the camera at the complete picture.
+5. Move the phone slowly to view the model from different angles.
+
+**This is image-target AR. It displays existing models; it does not convert arbitrary photographs into 3D objects.**
+
+## What is included
+
+| Anatomy content | Interface added in this adaptation |
+| --- | --- |
+| Skeleton, skull, human body, heart and brain | Satyam menu and consistent navigation |
+| Original image-target database and models | Short educational descriptions |
+| Original Vuforia tracking integration | Smaller/larger controls and reset |
+| Automatic model rotation | Pause/resume, help and credits |
+
+The added controls are source features pending validation in the built APK. The app is for educational visualization, not medical diagnosis.
+
+## Demo picture
+
+<img src="Demo/TARGET-PICTURE.png" alt="Required anatomy AR tracking target" width="300" />
+
+Keep the picture flat and visible. Use even lighting and avoid glare. You can also download the repository and double-click `Demo/OPEN TARGET.html` to display it locally.
+
+## Project layout
+
+```text
+Assets/           Anatomy scenes, models, materials, scripts and tracking data
+Packages/         Unity module dependencies
+ProjectSettings/  Unity and Android project configuration
+Demo/             Target picture and local viewer
+Documentation/    Editable report draft, viva notes and testing guidance
+LICENSE           Original BSD 2-Clause license
+```
+
+APK binaries belong in GitHub Releases; generated Unity caches, tools, installers and local credentials are excluded from source control.
+
+## Open and build
+
+This is a legacy project. Use **Unity 2018.2.14f1**, Android Build Support and the matching bundled Vuforia support. A newer editor is not a drop-in replacement.
+
+1. Install and activate Unity Personal if eligible.
+2. Open this repository's root as a Unity project.
+3. Configure JDK 8 and a compatible Android SDK in Unity External Tools.
+4. Use **Satyam > Build Android APK**.
+5. Test the generated APK on the actual presentation phone.
+
+The automated build currently produces `../Builds/SatyamAnatomyAR-Tecno.apk`, with a separate app ID `com.satyampandey.anatomyar`, minimum API 23 and target API 28. It uses the ARMv7 runtime from the original project. **ARM64-only phones need a runtime/SDK migration; this build is not guaranteed to work on every Realme phone.** This is a classroom sideloading build, not a Play Store submission configuration.
+
+## Before the viva
+
+- [Project report draft](Documentation/Satyam_Anatomy_AR_Report_DRAFT.docx): confirm institutional details, add final screenshots and actual results.
+- [Simple viva notes](Documentation/VIVA%20-%20SIMPLE.txt): learn the project flow and key concepts.
+- [Testing checklist](Documentation/TESTING.md): complete this for the final adapted APK.
+
+Do not mark pending tests as passed. Both students should be able to explain tracking, rendering, controls, limitations and their own actual contribution.
 
 ## Team
-- Satyam Pandey ? 0901AI231059
-- Kartikey Tiwari ? 0901AI231033
 
-## Changes in this adaptation
-- New Satyam menu and consistent anatomy navigation.
-- Educational descriptions of five anatomy models.
-- Bounded size controls and model transform reset.
-- Pause/resume automatic rotation.
-- In-app instructions and original project credits/license.
-- Separate Android application ID: `com.satyampandey.anatomyar`.
+| Student | Enrollment |
+| --- | --- |
+| Satyam Pandey | 0901AI231059 |
+| Kartikey Tiwari | 0901AI231033 |
 
-## Build
-Original editor: Unity 2018.2.14f1 with Android and bundled Vuforia support.
-Open the project, resolve the Unity license and Android tool paths, then use **Satyam > Build Android APK**.
-The build script outputs `../Builds/SatyamAnatomyAR-Tecno.apk`.
-This legacy build is ARMv7, target SDK 28, minimum SDK 23. It is NOT an ARM64 build and cannot be claimed compatible with all newer phones. A Realme device test is required; ARM64-only devices require a newer runtime/SDK migration.
+## Credits and license
 
-## Demo
-Display `../Phone Demo/TARGET-PICTURE.png` on a laptop or print it. Select a model and scan the full picture with the app. This app displays stored models; it does not reconstruct arbitrary photos.
+Adapted from [AnatomyViewerAR](https://github.com/danMoksh/AnatomyViewerAR) by **danMoksh**. Original team: Moksh Dandotiya, Yuvraj Tiwari and Mohit Sahu. The original BSD 2-Clause license is retained in [LICENSE](LICENSE) and included in the app's Credits.
 
-## Status
-The upstream APK was reported working by the user on a Tecno Spark Go 2023. The adapted source must be compiled and device-tested before submission. Do not use upstream results as test results for this adaptation.
-
-## Attribution
-Original project: danMoksh. Original team: Moksh Dandotiya, Yuvraj Tiwari, Mohit Sahu. Original BSD 2-Clause license retained in LICENSE and in-app Credits.
-Model and other third-party asset rights remain subject to their respective licenses.
+This adaptation adds presentation and interaction code. It does not claim the original tracking engine, models or source as newly authored work. Other asset rights remain with their respective owners.

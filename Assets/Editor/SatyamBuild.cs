@@ -11,6 +11,11 @@ public static class SatyamBuild
     {
         string directory = Path.GetFullPath(Path.Combine(Application.dataPath, "../../Builds"));
         Directory.CreateDirectory(directory);
+        string sdk = Path.GetFullPath(Path.Combine(Application.dataPath, "../../AndroidSDK"));
+        if (Directory.Exists(sdk)) EditorPrefs.SetString("AndroidSdkRoot", sdk);
+        string jdk = Environment.GetEnvironmentVariable("SATYAM_JDK_PATH");
+        if (!String.IsNullOrEmpty(jdk)) EditorPrefs.SetString("JdkPath", jdk);
+        EditorUserBuildSettings.androidBuildSystem = AndroidBuildSystem.Gradle;
         PlayerSettings.companyName = "Satyam Pandey";
         PlayerSettings.productName = "Satyam Anatomy AR";
         PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, "com.satyampandey.anatomyar");

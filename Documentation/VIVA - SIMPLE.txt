@@ -1,0 +1,8 @@
+OUR PROJECT: A phone app that displays stored 3D anatomy models over a predefined picture viewed through its camera.
+AR: Adding digital content to a view of the real world.
+UNITY: Manages models, scenes, interface, scripts and builds.
+VUFORIA: Recognizes and tracks the target picture.
+ORIGINALITY: We adapted an existing project; explain actual changes and tests honestly.
+PHOTO TO 3D? No. It recognizes its configured picture and displays stored models.
+DEMO: Open -> choose model -> scan target -> move phone -> show controls -> explain contribution.
+TEST: Install, camera permission, tracking, five models, menu, size, reset, rotation, restart. Record actual device and Android version.
