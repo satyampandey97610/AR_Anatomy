@@ -52,6 +52,7 @@ def para_flow(wp,maxw=WIDTH,incell=False):
   embed=blip.get(qn('r:embed'))
   if not embed:continue
   blob=doc.part.related_parts[embed].blob
+  if wp.paragraph_format.space_before:out.append(Spacer(1,wp.paragraph_format.space_before.pt))
   ext=wp._p.xpath('.//wp:extent')
   if ext:w=int(ext[0].get('cx'))/12700;h=int(ext[0].get('cy'))/12700
   else:w=maxw;h=maxw*.6
@@ -72,7 +73,8 @@ def para_flow(wp,maxw=WIDTH,incell=False):
    run=sized[0];size=run.font.size.pt
    color=colors.HexColor('#'+str(run.font.color.rgb)) if run.font.color.rgb else colors.black
    after=wp.paragraph_format.space_after.pt if wp.paragraph_format.space_after else 8
-   sty=ParagraphStyle('ExplicitText',parent=CENTER if wp.alignment==1 else BASE,fontSize=size,leading=size*1.15,textColor=color,spaceAfter=after)
+   before=wp.paragraph_format.space_before.pt if wp.paragraph_format.space_before else 0
+   sty=ParagraphStyle('ExplicitText',parent=CENTER if wp.alignment==1 else BASE,fontSize=size,leading=size*1.15,textColor=color,spaceAfter=after,spaceBefore=before)
   out.append(Paragraph(content,sty))
  if wp._p.xpath('.//w:br[@w:type="page"]'):out.append(PageBreak())
  if wp._p.xpath('./w:pPr/w:sectPr'):out.append(PageBreak())
