@@ -1,4 +1,4 @@
-# Satyam Anatomy AR
+#  Anatomy AR
 
 **Explore human anatomy through a phone camera.** Select a body part, scan the supplied picture, and inspect a stored 3D model in augmented reality.
 
