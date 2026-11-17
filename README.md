@@ -4,7 +4,9 @@
 
 ![Unity](https://img.shields.io/badge/Unity-2018.2.14f1-222222?logo=unity) ![Platform](https://img.shields.io/badge/Platform-Android-3DDC84?logo=android) ![License](https://img.shields.io/badge/License-BSD--2--Clause-blue)
 
-> **Build status:** the original APK was reported working on a Tecno Spark Go 2023. The Satyam adaptation is being compiled and is not yet device-verified. Realme compatibility is unverified. See release labels before installing.
+**[Download Android APK](https://github.com/satyampandey97610/AR_Anatomy/releases/download/v1.0.0/SatyamAnatomyAR.apk)** ? **[Project report PDF](Documentation/AR_Anatomy_Project_Report.pdf)** ? **[Editable Word report](Documentation/AR_Anatomy_Project_Report.docx)**
+
+> **Verified:** Android build, APK archive, metadata and v1/v2 signatures. **Pending:** testing the adapted APK on the phone. The original baseline was reported working on a Tecno Spark Go 2023. Realme compatibility remains unverified.
 
 ## Get started
 
@@ -20,12 +22,12 @@
 
 | Anatomy content | Interface added in this adaptation |
 | --- | --- |
-| Skeleton, skull, human body, heart and brain | Satyam menu and consistent navigation |
+| Skeleton, skull, human body, heart and brain | New menu and consistent navigation |
 | Original image-target database and models | Short educational descriptions |
 | Original Vuforia tracking integration | Smaller/larger controls and reset |
 | Automatic model rotation | Pause/resume, help and credits |
 
-The added controls are source features pending validation in the built APK. The app is for educational visualization, not medical diagnosis.
+The added controls have compiled; their behavior on the presentation phone still requires validation. The app is for educational visualization, not medical diagnosis.
 
 ## Demo picture
 
@@ -56,15 +58,29 @@ This is a legacy project. Use **Unity 2018.2.14f1**, Android Build Support and t
 4. Use **Satyam > Build Android APK**.
 5. Test the generated APK on the actual presentation phone.
 
-The automated build currently produces `../Builds/SatyamAnatomyAR-Tecno.apk`, with a separate app ID `com.satyampandey.anatomyar`, minimum API 23 and target API 28. It uses the ARMv7 runtime from the original project. **ARM64-only phones need a runtime/SDK migration; this build is not guaranteed to work on every Realme phone.** This is a classroom sideloading build, not a Play Store submission configuration.
+The automated build produces `../Builds/SatyamAnatomyAR.apk`, with a separate app ID `com.satyampandey.anatomyar`, minimum API 23 and target API 28. It uses the ARMv7 runtime from the original project. **ARM64-only phones need a runtime/SDK migration; this build is not guaranteed to work on every Realme phone.** This is a classroom sideloading build, not a Play Store submission configuration.
 
 ## Before the viva
 
-- [Project report draft](Documentation/Satyam_Anatomy_AR_Report_DRAFT.docx): confirm institutional details, add final screenshots and actual results.
+- [Project report PDF](Documentation/AR_Anatomy_Project_Report.pdf) and [editable Word report](Documentation/AR_Anatomy_Project_Report.docx): MITS format, faculty details, target, explanations, code and labeled Unity output previews. Add phone test results before final submission.
 - [Simple viva notes](Documentation/VIVA%20-%20SIMPLE.txt): learn the project flow and key concepts.
 - [Testing checklist](Documentation/TESTING.md): complete this for the final adapted APK.
 
 Do not mark pending tests as passed. Both students should be able to explain tracking, rendering, controls, limitations and their own actual contribution.
+
+## Output previews
+
+The images below are **Unity previews**, not evidence of camera tracking on a phone.
+
+| Menu | Skull | Human body |
+| --- | --- | --- |
+| ![Menu](Documentation/Output/OpenScene-UnityPreview.png) | ![Skull](Documentation/Output/Skull-UnityPreview.png) | ![Body](Documentation/Output/HumanBody-UnityPreview.png) |
+
+## Academic submission
+
+**Madhav Institute of Technology & Science, Gwalior (Deemed University)**  
+**Centre of Artificial Intelligence**  
+Submitted to **Dr. Vibha Tiwari** and **Mr. Ramnaresh Sharma**.
 
 ## Team
 

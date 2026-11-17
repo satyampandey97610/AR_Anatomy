@@ -55,7 +55,7 @@ public static class OpenSourceInitializer
     static void ReplaceModelRecoEventPlaceHolder(DefaultModelRecoEventHandlerPlaceHolder placeHolder)
     {
         var go = placeHolder.gameObject;
-        go.AddComponent<DefaultModelRecoEventHandler>();
+        // Model-recognition samples are not used by this image-target project.
 
         Object.DestroyImmediate(placeHolder);
     }
@@ -74,9 +74,7 @@ public static class OpenSourceInitializer
 
         public void AddDefaultModelRecoEventHandler(GameObject modelReco, ModelTargetBehaviour modelTargetTemplate)
         {
-            var mreh = modelReco.AddComponent<DefaultModelRecoEventHandler>();
-            mreh.ShowBoundingBox = true;
-            mreh.ModelTargetTemplate = modelTargetTemplate;
+            // Image-target application: no model-recognition sample handler is needed.
         }
     }
 }

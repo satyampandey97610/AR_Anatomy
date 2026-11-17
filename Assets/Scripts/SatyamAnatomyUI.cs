@@ -101,8 +101,8 @@ public class SatyamAnatomyUI : MonoBehaviour
     {
         RectTransform bg = Panel(canvas.transform, 0, 0, 5000, 5000, Ink);
         bg.SetAsFirstSibling();
-        Label(canvas.transform, "SATYAM", 0, 95, 660, 70, 52, Color.white);
-        Label(canvas.transform, "ANATOMY AR", 0, 170, 660, 60, 39, new Color(.3f, .91f, .81f));
+        Label(canvas.transform, "Satyam Anatomy AR", 0, 95, 660, 70, 42, Color.white);
+        Label(canvas.transform, "Explore. Inspect. Learn.", 0, 170, 660, 60, 30, new Color(.3f, .91f, .81f));
         Label(canvas.transform, "Explore the human body in augmented reality", 0, 245, 640, 80, 25, Color.white);
         for (int i = 0; i < Scenes.Length; i++)
         {
@@ -111,14 +111,14 @@ public class SatyamAnatomyUI : MonoBehaviour
         }
         Action(canvas.transform, "How to use", -153, 965, 274, 70, Help);
         Action(canvas.transform, "Credits", 153, 965, 274, 70, Credits);
-        Label(canvas.transform, "Satyam Pandey  |  0901AI231059\nAR/VR Lab Project", 0, 1085, 640, 90, 23, Color.white);
+        Label(canvas.transform, "AR/VR Lab Project\nImage-target anatomy learning", 0, 1085, 640, 90, 23, Color.white);
         Label(canvas.transform, "Educational visualization only", 0, 1190, 640, 40, 20, new Color(.7f, .76f, .83f));
     }
 
     void Viewer()
     {
         Panel(canvas.transform, 0, 0, 5000, 168, Ink);
-        Label(canvas.transform, "SATYAM  /  ANATOMY AR", 0, 22, 680, 48, 28, Color.white);
+        Label(canvas.transform, "ANATOMY AR", 0, 22, 680, 48, 28, Color.white);
         Action(canvas.transform, "Menu", -230, 88, 190, 60, () => SceneManager.LoadScene("OpenScene"));
         Action(canvas.transform, "Help", 0, 88, 190, 60, Help);
         Action(canvas.transform, "Credits", 230, 88, 190, 60, Credits);
