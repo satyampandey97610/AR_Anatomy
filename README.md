@@ -10,7 +10,7 @@
 
 ## Get started
 
-1. Download an APK from [Releases](https://github.com/satyampandey97610/AR_Anatomy/releases). Read whether it is the **original baseline** or the **Satyam adaptation**.
+1. Download an APK from [Releases](https://github.com/satyampandey97610/AR_Anatomy/releases). Read whether it is the **original baseline** or the **Anatomy AR adaptation**.
 2. Install it on an Android phone and allow camera access.
 3. Open [the target picture](Demo/TARGET-PICTURE.png) on a laptop, or print it. Download it before printing.
 4. Select an anatomy model and point the camera at the complete picture.
@@ -42,7 +42,7 @@ Assets/           Anatomy scenes, models, materials, scripts and tracking data
 Packages/         Unity module dependencies
 ProjectSettings/  Unity and Android project configuration
 Demo/             Target picture and local viewer
-Documentation/    Editable report draft, viva notes and testing guidance
+Documentation/    Project report, viva notes and testing guidance
 LICENSE           Original BSD 2-Clause license
 ```
 
