@@ -16,20 +16,23 @@ public static class AnatomyBuild
         string jdk = Environment.GetEnvironmentVariable("ANATOMY_JDK_PATH");
         if (!String.IsNullOrEmpty(jdk)) EditorPrefs.SetString("JdkPath", jdk);
         EditorUserBuildSettings.androidBuildSystem = AndroidBuildSystem.Internal;
-        PlayerSettings.companyName = "Satyam Pandey";
+        PlayerSettings.companyName = "AR VR Lab";
         PlayerSettings.productName = "Anatomy AR";
         PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, "com.arvrlab.anatomyar");
-        PlayerSettings.bundleVersion = "1.0";
-        PlayerSettings.Android.bundleVersionCode = 1;
+        PlayerSettings.bundleVersion = "1.0.1";
+        PlayerSettings.Android.bundleVersionCode = 2;
         PlayerSettings.Android.minSdkVersion = (AndroidSdkVersions)23;
         PlayerSettings.Android.targetSdkVersion = (AndroidSdkVersions)28;
         PlayerSettings.Android.targetArchitectures = AndroidArchitecture.ARMv7;
+        PlayerSettings.Android.androidTVCompatibility = false;
         PlayerSettings.defaultInterfaceOrientation = UIOrientation.Portrait;
         PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.Mono2x);
         string[] scenes = { "OpenScene", "Skeleton", "Skull", "HumanBody", "Heart", "Brain" };
         for (int i = 0; i < scenes.Length; i++) scenes[i] = "Assets/Scenes/" + scenes[i] + ".unity";
         string apk = Path.Combine(directory, "AnatomyAR.apk");
         BuildReport report = BuildPipeline.BuildPlayer(scenes, apk, BuildTarget.Android, BuildOptions.None);
+        if (!File.ReadAllText(Path.Combine(Application.dataPath, "Resources/VuforiaConfiguration.asset")).Contains("eulaAccepted: 1"))
+            throw new Exception("Vuforia Developer Agreement acceptance was not recorded in the built configuration. Do not distribute this APK.");
         if (report.summary.result != BuildResult.Succeeded) throw new Exception("Android build failed: " + report.summary.result);
         // The legacy internal packager may leave its output unsigned with current JDKs.
         // Verify the final distribution package rather than relying on the Unity success message.

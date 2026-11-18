@@ -202,7 +202,7 @@ para('Reset restores the recorded local transforms and the default shared size m
 D.add_paragraph('size = 1f;\nfor (int i = 0; i < roots.Count; i++)\n{\n    if (!roots[i]) continue;\n    roots[i].localPosition = positions[i];\n    roots[i].localRotation = rotations[i];\n    roots[i].localScale = scales[i];\n}',style='Project Code')
 h('A.5 Checking the Distributed Build',2)
 v=json.loads((OUT/'BUILD-VERIFICATION.json').read_text(encoding='utf-8'))
-para('The signed release is AnatomyAR.apk, version 1.0, with package identifier com.arvrlab.anatomyar. Its architecture is ARMv7. Archive inspection and Android v1/v2 signature verification passed. The checksum below identifies the distributed file.')
+para('The signed release is AnatomyAR.apk, version 1.0.1, with package identifier com.arvrlab.anatomyar. Its architecture is ARMv7. Archive inspection and Android v1/v2 signature verification passed. The checksum below identifies the distributed file.')
 D.add_paragraph(v['sha256'],style='Project Code')
 # Keep the editable file self-contained; the PDF exporter fills the TOC cache.
 u=OxmlElement('w:updateFields');u.set(qn('w:val'),'false');D.settings.element.append(u)

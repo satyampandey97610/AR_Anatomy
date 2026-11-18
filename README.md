@@ -8,6 +8,10 @@
 
 > **Verified:** Android build, APK archive, metadata and v1/v2 signatures. **Pending:** testing the adapted APK on the phone. The original baseline was reported working on a Tecno Spark Go 2023. Realme compatibility remains unverified.
 
+## Camera startup update (1.0.1)
+
+Version 1.0.0 showed a black camera view on the Tecno. Its build log revealed that Vuforia initialization was disabled because Developer Agreement acceptance had not been recorded. Version 1.0.1 records the user's acceptance, disables unsupported Android TV compatibility and adds a build check for the agreement flag. Device confirmation of this correction is pending. Install the latest APK as an update; it retains the same package and signing key.
+
 ## Get started
 
 1. Download an APK from [Releases](https://github.com/satyampandey97610/AR_Anatomy/releases). Read whether it is the **original baseline** or the **Anatomy AR adaptation**.

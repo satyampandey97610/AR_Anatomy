@@ -1,6 +1,6 @@
 {
   "app": "Anatomy AR",
-  "version": "1.0",
+  "version": "1.0.1",
   "package": "com.arvrlab.anatomyar",
   "unity": "2018.2.14f1",
   "min_sdk": 23,
@@ -12,8 +12,11 @@
   "archive_integrity": "passed",
   "apk_signature_v1": "verified",
   "apk_signature_v2": "verified",
-  "sha256": "1cb5518496fb97e4819cdf3fbcdb516020a68f9277775c7e73e922515f1e5400",
-  "modified_apk_phone_test": "pending",
+  "sha256": "5bd67d9a84ee669475feec9b32bfbdf8328f484b17b10855783ac0271b646cec",
+  "modified_apk_phone_test": "1.0.0 black camera reported on Tecno; 1.0.1 retest pending",
   "baseline_phone_test": "User reported anatomy views working on Tecno Spark Go 2023",
-  "realme_test": "pending"
+  "realme_test": "pending",
+  "version_code": 2,
+  "vuforia_agreement_recorded": true,
+  "android_tv_compatibility": false
 }

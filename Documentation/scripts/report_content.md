@@ -176,7 +176,7 @@ The Android packaging step initially waited on a dependency used by the old Grad
 
 ## 5.8 Signing and Identifying the APK
 
-AnatomyBuild.cs configures the application name, package identifier, scenes and Android settings. The final release uses the application identifier com.arvrlab.anatomyar and version 1.0. After packaging, Android signing tools sign and verify the distribution file. The build script checks the signing result rather than relying only on Unity's build-success message.
+AnatomyBuild.cs configures the application name, package identifier, scenes and Android settings. The final release uses the application identifier com.arvrlab.anatomyar and version 1.0.1. After packaging, Android signing tools sign and verify the distribution file. The build script checks the signing result rather than relying only on Unity's build-success message.
 
 The signed package is distributed as AnatomyAR.apk. Its checksum is supplied with the release and recorded in the build verification file. A checksum identifies a particular file; it is useful when confirming which APK was tested or submitted. It does not establish that all runtime features have passed a device test.
 
@@ -224,7 +224,7 @@ The original APK was used for the initial phone check. The user reported that th
 
 ## 7.2 Compilation and Packaging Result
 
-The adapted project compiled and completed Android packaging successfully with Unity 2018.2.14f1. The resulting APK archive passed an integrity check. Package inspection identified the label Anatomy AR, version 1.0 and the identifier com.arvrlab.anatomyar. The package contains the ARMv7 native runtime and uses minimum API 23 and target API 28.
+The adapted project compiled and completed Android packaging successfully with Unity 2018.2.14f1. The resulting APK archive passed an integrity check. Package inspection identified the label Anatomy AR, version 1.0.1 and the identifier com.arvrlab.anatomyar. The package contains the ARMv7 native runtime and uses minimum API 23 and target API 28.
 
 Android signature verification passed for both the v1 and v2 signature schemes. This check is important because an unsigned archive is not a valid final installation package merely because it has an .apk extension. The final distributed file is the signed AnatomyAR.apk supplied through GitHub Releases.
 
