@@ -4,7 +4,7 @@
 
 ![Unity](https://img.shields.io/badge/Unity-2018.2.14f1-222222?logo=unity) ![Platform](https://img.shields.io/badge/Platform-Android-3DDC84?logo=android) ![License](https://img.shields.io/badge/License-BSD--2--Clause-blue)
 
-**[Download Android APK](https://github.com/satyampandey97610/AR_Anatomy/releases/download/v1.0.0/AnatomyAR.apk)** ? **[Project report PDF](Documentation/AR_Anatomy_Project_Report.pdf)** ? **[Editable Word report](Documentation/AR_Anatomy_Project_Report.docx)**
+**[Download Android APK](https://github.com/satyampandey97610/AR_Anatomy/releases/download/v1.0.1/AnatomyAR.apk)** ? **[Project report PDF](Documentation/AR_Anatomy_Project_Report.pdf)** ? **[Editable Word report](Documentation/AR_Anatomy_Project_Report.docx)**
 
 > **Verified:** Android build, APK archive, metadata and v1/v2 signatures. **Pending:** testing the adapted APK on the phone. The original baseline was reported working on a Tecno Spark Go 2023. Realme compatibility remains unverified.
 
