@@ -6,11 +6,11 @@
 
 **[Download Android APK](https://github.com/satyampandey97610/AR_Anatomy/releases/download/v1.0.1/AnatomyAR.apk)** ? **[Project report PDF](Documentation/AR_Anatomy_Project_Report.pdf)** ? **[Editable Word report](Documentation/AR_Anatomy_Project_Report.docx)**
 
-> **Verified:** Android build, APK archive, metadata and v1/v2 signatures. **Phone test failed:** the adapted APK shows a black camera view on the Tecno; runtime diagnosis is in progress. The original baseline was reported working on a Tecno Spark Go 2023. Realme compatibility remains unverified.
+> **Device verified:** Anatomy AR 1.0.1 installed directly on Tecno Spark Go 2023 (TECNO BF7), Android 12. Live camera and all five target-based models were observed. [Actual phone screenshots](Documentation/Output/Device). Realme remains untested.
 
 ## Camera startup update (1.0.1)
 
-Version 1.0.0 showed a black camera view on the Tecno. Its build log revealed that Vuforia initialization was disabled because Developer Agreement acceptance had not been recorded. Version 1.0.1 records the user's acceptance, disables unsupported Android TV compatibility and adds a build check for the agreement flag. The user reports that the black camera view persists in 1.0.1. This release is not a confirmed camera fix; USB device logs are needed to diagnose the remaining failure. Install the latest APK as an update; it retains the same package and signing key.
+Version 1.0.0 had a disabled Vuforia agreement flag. After the project owner accepted the agreement, 1.0.1 was built with the accepted configuration. USB inspection subsequently revealed that the phone still had 1.0 installed despite the newer APK download. Installing 1.0.1 directly restored the live camera, and all five models were observed over the target. Downloading an APK does not install its update; confirm version 1.0.1 in Android app information.
 
 ## Get started
 
@@ -31,7 +31,7 @@ Version 1.0.0 showed a black camera view on the Tecno. Its build log revealed th
 | Original Vuforia tracking integration | Smaller/larger controls and reset |
 | Automatic model rotation | Pause/resume, help and credits |
 
-The added controls have compiled; their behavior on the presentation phone still requires validation. The app is for educational visualization, not medical diagnosis.
+The controls were exercised on the Tecno, including navigation, pause state, sizing and reset. The app is for educational visualization, not medical diagnosis.
 
 ## Demo picture
 
@@ -66,7 +66,7 @@ The automated build produces `../Builds/AnatomyAR.apk`, with a separate app ID `
 
 ## Before the viva
 
-- [Project report PDF](Documentation/AR_Anatomy_Project_Report.pdf) and [editable Word report](Documentation/AR_Anatomy_Project_Report.docx): MITS format, faculty details, target, explanations, code and labeled Unity output previews. Add phone test results before final submission.
+- [Project report PDF](Documentation/AR_Anatomy_Project_Report.pdf) and [editable Word report](Documentation/AR_Anatomy_Project_Report.docx): MITS format, faculty details, target, explanations, code and labeled Unity output previews. Includes the Tecno phone-test results and actual device captures.
 - [Simple viva notes](Documentation/VIVA%20-%20SIMPLE.txt): learn the project flow and key concepts.
 - [Testing checklist](Documentation/TESTING.md): complete this for the final adapted APK.
 

@@ -230,23 +230,23 @@ Android signature verification passed for both the v1 and v2 signature schemes. 
 
 The release file contains the built application, model content and packaged tracking data. The build record and checksum provide a way to identify the exact version distributed for testing. These checks establish a usable build artifact and its expected metadata; they do not measure tracking stability or confirm every interaction on a phone.
 
-## 7.3 Visual Inspection of the Project
+## 7.3 Observation on the Presentation Phone
 
-The report includes previews captured from the actual Unity project. They show the implemented menu, anatomy assets, descriptions and control layout. The model previews were prepared in Unity for documentation and are labeled accordingly. They are not screenshots of successful phone-camera tracking.
+The adapted APK was tested directly on the TECNO BF7, sold as the Spark Go 2023, running Android 12. USB package inspection first showed version 1.0 still installed, although the newer APK had been downloaded. Camera permission was already granted. Version 1.0.1, version code 2, was then installed directly as an update with Android Debug Bridge.
 
-This distinction allows the report to include useful visual output while keeping the evidence clear. A phone screenshot would show the camera background and the tracked content under the conditions of that device test. A Unity preview instead shows the stored scene content and interface arrangement. Both can be useful, but they answer different questions.
+The runtime log recorded successful Vuforia initialization and recognition of the Skleton target. The live camera background became visible. All five anatomy scenes were selected, and screenshots showed the skeleton, skull, human body, heart and brain rendered over the camera view with the supplied target visible. These captures establish the camera and model workflow on the tested phone.
 
-## 7.4 Acceptance Test for the Adapted APK
+## 7.4 Device Checks and Recorded Evidence
 
-The remaining acceptance step is to install the signed adapted release on the Tecno and exercise the complete workflow. The test should record the device model, installed Android version and APK version. It should cover launch, camera permission, target acquisition, target loss and recovery, and selection of all five anatomy scenes.
+The demonstration session exercised model selection and return navigation. Target-found and target-lost events were recorded, followed by recognition again when the picture returned into view. This is the expected distinction between starting the camera and acquiring the image reference. A visible camera background without a model can simply mean that the configured target is not currently recognized.
 
-The same session should check Menu, Help, Credits, Smaller, Larger, Reset and pause/resume rotation. Closing and reopening the application checks whether the starting workflow remains usable. A short screen recording and several screenshots should be retained as the record of the final demonstration build.
+The common controls were exercised during the session, with screenshots retained for the paused rotation state and model-size controls. The Help dialog was also opened for inspection. Credits was not separately verified. These are functional observations from one device session, rather than a controlled assessment of every possible touch sequence or environmental condition. The original Unity previews remain available separately from the phone captures.
 
-Realme compatibility remains untested. No frame-rate measurements, controlled lighting study or learning-outcome experiment was carried out as part of the recorded checks. The report therefore does not assign numerical accuracy, speed or educational-improvement values to the application.
+Realme compatibility remains untested. No frame-rate measurements, controlled lighting study or learning-outcome experiment was carried out. The report therefore does not assign numerical accuracy, speed or educational-improvement values to the application. Testing another phone requires installing the signed release and repeating the camera and target workflow on that device.
 
 ## 7.5 Result Summary
 
-The completed work provides a compiled and signed Anatomy AR release, organized source, a supplied target picture and a documented interface. The recorded phone success belongs to the original baseline application. Final runtime acceptance of the adapted APK is pending the presentation-device test. This is the boundary between the result already established and the check still needed before the viva.
+The signed Anatomy AR 1.0.1 release was installed and observed working on the Tecno presentation phone. Package inspection confirmed the installed version, and actual phone screenshots documented all five models with the live camera. The earlier black-screen report occurred while version 1.0 remained installed. Its build also contained a disabled Vuforia agreement flag; the accepted configuration is present in 1.0.1. The successful device test is the evidence for this release, rather than the build log alone.
 
 ## 7.6 Repeating the Package Checks
 
@@ -256,7 +256,7 @@ The command apksigner verify --verbose AnatomyAR.apk checks the package signatur
 
 A SHA-256 checksum identifies the exact file. After downloading the release, its checksum can be compared with SHA256SUMS.txt. Matching values show that the downloaded bytes match the published build. If the values differ, the file should be downloaded again before the demonstration. The size of installed application storage is a separate value and may include extracted libraries and application data.
 
-These checks also help distinguish the inherited baseline from the adapted application. Both may remain installed because their package identifiers differ. The demonstrator should open Anatomy AR and confirm its five-model menu before scanning the target. Keeping the tested APK and its checksum together prevents confusion when several earlier downloads are present.
+The baseline and adapted apps can coexist because their package identifiers differ. Confirm the installed version in Android app information, and keep the tested APK with its checksum.
 
 # CHAPTER 9: DISCUSSION, LIMITATIONS AND FUTURE SCOPE
 
@@ -270,7 +270,7 @@ The adaptation also demonstrates the practical work required to prepare an exist
 
 The application depends on the configured target and on conditions that allow it to be observed. Glare, blur, poor lighting and partial visibility can interfere with the demonstration. The anatomy assets are simplified representations, and model scale is controlled for inspection rather than for measurement of a real structure.
 
-The project uses a legacy runtime and ARMv7 libraries. Device support must therefore be checked instead of inferred from the Android brand or model name alone. The interface and controls also need final testing together with the camera workflow, since an editor preview cannot reproduce every aspect of touch input or camera behavior.
+The project uses a legacy runtime and ARMv7 libraries. Device support must therefore be checked instead of inferred from the Android brand or model name alone. The interface and camera workflow were observed together on the Tecno, while broader device coverage remains necessary because an editor preview cannot reproduce every aspect of touch input or camera behavior.
 
 The educational descriptions are introductory. The project is not intended for diagnosis, surgery planning or patient advice. No study of learner performance was conducted, so the report treats improved engagement or learning as a possible direction for evaluation rather than as a measured result.
 
@@ -294,4 +294,4 @@ The target picture is also part of the demonstration, rather than an incidental 
 
 Anatomy AR provides a practical image-target anatomy viewer based on an acknowledged existing Unity and Vuforia project. The adaptation adds a common interface, educational descriptions, inspection controls and organized submission material. The Android build, archive inspection and signature checks were completed, and the source and release files were published in the project repository.
 
-The project illustrates how recognition, tracking, rendering and interaction work together. Its final acceptance depends on testing the adapted APK on the presentation phone and keeping the resulting evidence with the report. Both students should be able to explain the workflow, identify the reused content and demonstrate the controls with an understanding of the application's limits.
+The project illustrates how recognition, tracking, rendering and interaction work together. The adapted APK was tested on the Tecno presentation phone, and the resulting camera captures are supplied with the report. Both students should be able to explain the workflow, identify the reused content and demonstrate the controls with an understanding of the application's limits.

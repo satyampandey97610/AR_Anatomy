@@ -13,11 +13,26 @@
   "apk_signature_v1": "verified",
   "apk_signature_v2": "verified",
   "sha256": "5bd67d9a84ee669475feec9b32bfbdf8328f484b17b10855783ac0271b646cec",
-  "modified_apk_phone_test": "FAILED: user reports black camera view on Tecno for both 1.0.0 and 1.0.1",
+  "modified_apk_phone_test": "PASSED camera and target-based display of all five models on TECNO BF7 / Android 12 with 1.0.1 installed via ADB",
   "baseline_phone_test": "User reported anatomy views working on Tecno Spark Go 2023",
   "realme_test": "pending",
   "version_code": 2,
   "vuforia_agreement_recorded": true,
   "android_tv_compatibility": false,
-  "runtime_diagnosis": "Pending USB-connected device logs; build checks do not establish camera operation"
+  "runtime_diagnosis": "The phone retained 1.0 despite downloading 1.0.1. Direct installation of 1.0.1 restored the camera. Earlier 1.0 build had Vuforia agreement disabled.",
+  "device": "TECNO BF7 / Spark Go 2023",
+  "android_version": "12",
+  "installed_version_before_test": "1.0 (versionCode 1)",
+  "installed_version_after_update": "1.0.1 (versionCode 2)",
+  "vuforia_runtime": "Initialization successful; target found, lost and found again in device log",
+  "remaining_checks": "Realme untested; no controlled performance or lighting study",
+  "device_observations": [
+    "Successful Vuforia initialization",
+    "Target found, lost and reacquired",
+    "Skeleton, skull, human body, heart and brain visible over live camera",
+    "Menu return navigation",
+    "Pause button changes to Resume rotation",
+    "Size and reset buttons exercised; no numerical scale measurement",
+    "Help dialog displayed"
+  ]
 }
