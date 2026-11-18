@@ -13,10 +13,11 @@
   "apk_signature_v1": "verified",
   "apk_signature_v2": "verified",
   "sha256": "5bd67d9a84ee669475feec9b32bfbdf8328f484b17b10855783ac0271b646cec",
-  "modified_apk_phone_test": "1.0.0 black camera reported on Tecno; 1.0.1 retest pending",
+  "modified_apk_phone_test": "FAILED: user reports black camera view on Tecno for both 1.0.0 and 1.0.1",
   "baseline_phone_test": "User reported anatomy views working on Tecno Spark Go 2023",
   "realme_test": "pending",
   "version_code": 2,
   "vuforia_agreement_recorded": true,
-  "android_tv_compatibility": false
+  "android_tv_compatibility": false,
+  "runtime_diagnosis": "Pending USB-connected device logs; build checks do not establish camera operation"
 }
